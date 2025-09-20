@@ -11,6 +11,6 @@ class MessageController {
     fun listMessages() = listOf(
         Message("1", "Hello!"),
         Message("2", "Bonjour!"),
-        Message("3", "Privet eiei eiei!"),
+        Message("3", "Privet Chin!"),
     )
 }
