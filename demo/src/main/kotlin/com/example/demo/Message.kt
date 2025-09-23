@@ -1,3 +1,6 @@
 package com.example.demo
 
-data class Message(val id: String?, val text: String)
+data class Message(
+    val id: String?,
+    val text: String,
+)
