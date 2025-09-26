@@ -3,24 +3,27 @@ package com.example.demo
 
 import org.springframework.stereotype.Service
 import org.springframework.jdbc.core.JdbcTemplate
+import org.springframework.jdbc.core.query
 import java.util.*
 
 @Service
 class MessageService(private val db: JdbcTemplate) {
-    fun findMessages(): List<Message> = db.query("select * from messages") { response, _ ->
+    fun findMessages(): List<Message> = db.query("SELECT * FROM messages") { response, _ ->
         Message(response.getString("id"), response.getString("text"))
     }
 
     fun save(message: Message): Message {
         val id = UUID.randomUUID().toString()
         db.update(
-            "insert into messages values ( ?, ? )",
+            "INSERT INTO messages values ( ?, ? )",
             id, message.text
         )
         return message.copy(id = id)
-//        db.update(
-//            "insert into messages values ( ?, ? )",
-//            message.id, message.text
-//        )
     }
+
+    fun findById(id: String): Message? = db.query(
+        "SELECT * FROM messages WHERE id = ?",
+        { response, _ -> Message(response.getString("id"), response.getString("text")) },
+        id
+    ).singleOrNull()
 }
