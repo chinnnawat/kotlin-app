@@ -18,7 +18,8 @@ class MessageService(private val db: JdbcTemplate) {
             "INSERT INTO messages values ( ?, ? )",
             id, message.text
         )
-        return message.copy(id = id)
+//        return message.copy(id = id)
+        return Message(message.id, message.text)
     }
 
     fun findById(id: String): Message? = db.query(
