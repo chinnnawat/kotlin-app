@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.PathVariable
 import java.net.URI
+import java.util.UUID
 
 @RestController
 @RequestMapping("/")
@@ -21,13 +22,13 @@ class MessageController(private val service : MessageService) {
         return ResponseEntity.created(URI.create("/${savedMessage.id}")).body(savedMessage)
     }
 
-//    @GetMapping("/{id}")
-//    fun getMessage(@PathVariable id : String): ResponseEntity<Any> {
-//        val message = service.findMessageById(id)
-//        return if (message != null) {
-//            ResponseEntity.ok(message)
-//        } else {
-//            ResponseEntity.status(404).body(mapOf("error" to "Message not found"))
-//        }
-//    }
+    @GetMapping("/{id}")
+    fun getMessage(@PathVariable id : UUID): ResponseEntity<Any> {
+        val message = service.findMessageById(id)
+        return if (message != null) {
+            ResponseEntity.ok(message)
+        } else {
+            ResponseEntity.status(404).body(mapOf("error" to "Message not found"))
+        }
+    }
 }
