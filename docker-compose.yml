@@ -19,6 +19,7 @@ services:
       timeout: 5s
       retries: 10
   app:
+    container_name: demo_app-kotlin
     build:
       context: demo
       dockerfile: Dockerfile
@@ -26,7 +27,7 @@ services:
       - 8080:8080
     volumes:
       - ./demo/src/main:/app/src/main
-#    restart: always
+    #    restart: always
     depends_on:
       db:
         condition: service_healthy
