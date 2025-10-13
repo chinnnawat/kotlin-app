@@ -30,6 +30,8 @@ dependencies {
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	testRuntimeOnly("com.h2database:h2")
+    implementation("jakarta.persistence:jakarta.persistence-api:3.1.0")
+    implementation("jakarta.ws.rs:jakarta.ws.rs-api:3.1.0")
 }
 
 kotlin {
