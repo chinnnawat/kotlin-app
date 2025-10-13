@@ -13,8 +13,8 @@ class Account(
     val id: UUID ? = null,
     @Column(unique = true, nullable = true)
     val email: String ? = null,
-    @Column(unique = true, nullable = true)
-    val password: String,
+    @Column(name = "password_hash", nullable = false)
+    val passwordHash: String,
     @Column(unique = true, nullable = true)
     val status : AccountStatus = AccountStatus.ACTIVE,
     @Column(unique = true, nullable = true)

@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:18.0
+    image: postgres:17-alpine
     container_name: postgres_db
     restart: unless-stopped
     env_file:

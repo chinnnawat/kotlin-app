@@ -32,6 +32,8 @@ dependencies {
 	testRuntimeOnly("com.h2database:h2")
     implementation("jakarta.persistence:jakarta.persistence-api:3.1.0")
     implementation("jakarta.ws.rs:jakarta.ws.rs-api:3.1.0")
+    implementation("org.flywaydb:flyway-core:11.14.0")
+    implementation("org.flywaydb:flyway-database-postgresql:11.14.0")
 }
 
 kotlin {
@@ -42,4 +44,5 @@ kotlin {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+    systemProperty("spring.profiles.active", "test")
 }
